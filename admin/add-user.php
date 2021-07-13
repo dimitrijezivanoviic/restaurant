@@ -122,11 +122,11 @@
                                     {   
                                         $_SESSION['succes_add']="Uspesno ste dodali korisnika.";
                                         ?>
-                                            <script>window.location.href='admin.php';</script>
+                                            <script>window.location.href='users.php';</script>
                                         <?php
                                     }else{
                                         ?>
-                                            <script>window.location.href='admin.php';</script>
+                                            <script>window.location.href='users.php';</script>
                                         <?php
                                     }
                                 }else{

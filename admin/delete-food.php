@@ -22,6 +22,10 @@ if($role=='admin' && $status == 'active')
     $res_name = mysqli_query($conn, $sql_name);
     $rows_name=mysqli_fetch_assoc($res_name);
 
+     //Brisanje hrane ili pica iz korpe koji brisemo zbog spoljnog kljuca
+     $sql_delete_cart_foreignkey = "DELETE FROM cart WHERE product_code=$id";
+     $res_delete_cart_foreignkey = mysqli_query($conn, $sql_delete_cart_foreignkey);
+
     $title = $rows_name['title'];
     $sql = "DELETE FROM tbl_food WHERE id=$id";
     $res = mysqli_query($conn, $sql);

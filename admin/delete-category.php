@@ -16,6 +16,13 @@ if(isset($_SESSION['user'])){
 if($role=='admin' && $status == 'active')
 { 
     $id=$_GET['id'];
+
+    //Brisanje svih namirnica sa datom kategorijom zbog spoljnog kljuca
+    $sql_delete_foreignkey = "DELETE FROM tbl_food WHERE categoryID=$id";
+    $res_delete_foreignkey = mysqli_query($conn, $sql_delete_foreignkey);
+
+   
+
     $sql = "DELETE FROM tbl_category WHERE id=$id";
     $res = mysqli_query($conn, $sql);
 
