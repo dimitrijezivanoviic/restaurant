@@ -50,7 +50,7 @@
                         <input type="radio" name="role" value="admin"> Admin
                         <input type="radio" name="role" value="korisnik" checked> Korisnik
                         <input type="radio" name="role" value="admin"> Kuvar
-                        <input type="radio" name="role" value="user"> Dostavljac
+                        <input type="radio" name="role" value="korisnik"> Dostavljac
                     </div>
                 </div>
                 <div class="row margin_bottom_10">
