@@ -11,8 +11,8 @@ $rezultat = $upit->get_result();
 $red = $rezultat->fetch_assoc();
 
 date_default_timezone_set('CET');
-$start = date("Y/m/d h:i:s");
-$ordered_time = date('Y/m/d h:i:s',strtotime('+30 minutes',strtotime($start)));
+$start = date("Y/m/d H:i:s");
+$ordered_time = date('Y/m/d H:i:s',strtotime('+30 minutes',strtotime($start)));
 
 $status1 = $red['order_status'];
 

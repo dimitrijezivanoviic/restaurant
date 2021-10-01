@@ -55,7 +55,7 @@
                     </div>
                     <div class="row margin_bottom_10">
                         <div class="col-md-6 btn-update width_50">
-                            <input type="submit" value="Azuriraj" name="update">
+                            <input type="submit" value="Ažuriraj" name="update">
                         </div>
                     </div>
                 </form>

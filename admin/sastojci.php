@@ -5,8 +5,8 @@
 ?>
 <main>
     <div class="row row_column">
-        <h3>Membership sastojci</h3>
-        <p>Ovde možete upravljati svim sastojcima koje korisnici mogu da biraju kada ostvare GOLD membership.</p>
+        <h3>Sastojci</h3>
+        <p>Ovde možete upravljati svim sastojcima</p>
     </div>
     <div class="row">
         <a href="add-sastojak.php" class="btn-primary"><i class="las la-plus-circle"></i> Dodaj sastojke</a>
@@ -80,11 +80,11 @@
                                     <tr>
                                         <td data-label="ID"><?php echo $id; ?></td>
                                         <td data-label="Naziv"><?php echo $name; ?></td>
-                                        <td data-label="Slika"><img src="../sajt/img/<?php echo $image; ?>" heigh="50px" width="100px" alt=""></td>
+                                        <td data-label="Slika"><img src="/img/<?php echo $image; ?>" heigh="50px" width="100px" alt=""></td>
                                         <td data-label="Status"><?php echo $status; ?></td>
                                         <td colspan="2" data-label="Akcija">
                                             <a href="update-sastojak.php?id=<?php echo $id; ?>" class="btn-secondary"><span class="las la-edit"></a>
-                                            <a href="delete-sastojak.php?id=<?php echo $id; ?>" class="btn-danger"><span class="las la-trash"></a>
+                                            <a onclick="return confirm('Da li ste sigurni da želite obrisati?');" href="delete-sastojak.php?id=<?php echo $id; ?>" class="btn-danger"><span class="las la-trash"></a>
                                         </td>
                                     </tr>
                                 <?php

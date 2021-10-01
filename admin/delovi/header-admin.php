@@ -13,6 +13,7 @@
  $rows_session = mysqli_fetch_assoc($res);
  $role = $rows_session['role'];
  $id_username = $rows_session['id'];
+ $role_status = $rows_session['status'];
  
 ?>
 
@@ -73,6 +74,12 @@
                         <span>Sastojci</span></a>
                 </li>
                 <?php } ?>
+                <?php if ($role == 'kuvar' || $role == 'admin'){ ?>
+                <li>
+                    <a href="recepti.php"><span class="las la-file-contract"></span>
+                        <span>Recepti</span></a>
+                </li>
+                <?php } ?>
                 <?php if ($role == 'admin'){ ?>
                 <li>
                     <a href="kuponi.php"><span class="las la-ticket-alt"></span>
@@ -82,15 +89,16 @@
                 <?php if ($role == 'kuvar' || $role == 'admin'){ ?>
                 <li>
                     <a href="porudzbine.php"><span class="las la-clipboard-list"></span>
-                        <span>Porudžbine</span></a>
+                        <span>Porudžbine za pripremu</span></a>
                 </li>
                 <?php } ?>
                 <?php if ($role == 'dostavljac' || $role == 'admin'){ ?>
                 <li>
                     <a href="dostave.php"><span class="las la-shipping-fast"></span>
-                        <span>Dostave</span></a>
+                        <span>Dostava porudžbina</span></a>
                 </li>
                 <?php } ?>
+               
                 <br><br>
                 <li>
                     <a href="logout.php"><span class="las la-power-off"></span><span>Logout</span></a>

@@ -335,7 +335,7 @@ if($role == 'admin' || $role == 'korisnik')
                                                     if($status=='ordered')
                                                     {
                                                     ?>
-                                                        <a href="cancel-order.php?id=<?php echo $id; ?>" class="btn-danger"><i class="fas fa-trash"></i> Otkaži porudžbinu</a>
+                                                        <a onclick="return confirm('Da li ste sigurni da želite da otkažete?');" href="cancel-order.php?id=<?php echo $id; ?>" class="btn-danger"><i class="fas fa-trash"></i> Otkaži porudžbinu</a>
                                                     <?php
                                                     } 
                                                     ?>
@@ -481,18 +481,18 @@ if($role == 'admin' || $role == 'korisnik')
                     ?>
                         <div class="empty-container">
                     <?php
-                        $sql_sastojci = "SELECT * FROM sastojci WHERE status = 'active'";
+                        $sql_sastojci = "SELECT * FROM sastojci WHERE status = 'active' AND categoryID='9'";
                         $res_sastojci = mysqli_query($conn, $sql_sastojci);
                     ?>
                         <form action="" method="POST" class="forma">
                             <div class="row">
                                 <div class="title">
                                     <h3>OSTVARILI STE <strong>GOLD</strong> MEMBERSHIP</h3>
-                                    <small>Za svaku 5. kupovinu dobijate pravo da birate sami sadrzaj pice koju dobijate besplatno!</small>
+                                    <small>Za svaku 5. kupovinu dobijate pravo da birate sami sadržaj pice koju dobijate besplatno!</small>
                                 </div>
                             </div>
                             <div class="row">
-                                <h5>Velicina pice: </h5>
+                                <h5>Veličina pice: </h5>
                             </div>
                             <div class="row row_sastojci">
                                 <div class="col-md-4">
@@ -532,7 +532,7 @@ if($role == 'admin' || $role == 'korisnik')
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <h5>Adresa*</h5>
-                                        <input type="text" name="adresa" placeholder="Unesi svoju adresu" required><br>
+                                        <input type="text" name="adresa" placeholder="Unesi adresu za isporuku" required><br>
                                     </div>
                                 </div>
                             </div>
@@ -540,7 +540,7 @@ if($role == 'admin' || $role == 'korisnik')
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <h5>Broj telefona*</h5>
-                                        <input type="text" name="broj_telefona" placeholder="Unesi svoj broj telefona" required><br>
+                                        <input type="text" name="broj_telefona" placeholder="Unesi telefon za isporuku" required><br>
                                     </div>
                                 </div>
                                 <div class="col-md-4"></div>
@@ -568,9 +568,9 @@ if($role == 'admin' || $role == 'korisnik')
                         {
                             if (isset($_POST['radio-btn']))
                             {
-                                $velicina = 'Velicina pice: ' . $_POST['radio-btn'] . '<br>';
+                                $velicina = 'Veličina pice: ' . $_POST['radio-btn'] . '<br>';
                             }else{
-                                $velicina = 'Velicina pice: bilo koja <br>';
+                                $velicina = 'Veličina pice: bilo koja <br>';
                             }
 
                             if(isset($_POST['prilog']))
@@ -588,8 +588,8 @@ if($role == 'admin' || $role == 'korisnik')
                             $porudzbina = $velicina . $prilozi;
                             echo $porudzbina;
                             date_default_timezone_set('CET');
-                            $start = date("Y/m/d h:i:s");
-                            $ordered_time = date('Y/m/d h:i:s',strtotime('+1 hour',strtotime($start)));
+                            $start = date("Y/m/d H:i:s");
+                            $ordered_time = date('Y/m/d H:i:s',strtotime('+45 minutes',strtotime($start)));
 
                             $upit_membership = $conn->prepare("INSERT INTO orders SET
                             email = '$email',
@@ -608,7 +608,10 @@ if($role == 'admin' || $role == 'korisnik')
                             if($upit_membership)
                             {
                                 ?>
-                                <script>window.location.href = "myaccount.php";</script>
+                                <script>
+                                    alert("Uspešno ste poručili membership pizzu!");
+                                    window.location.href = "myaccount.php";
+                                </script>
                                 <?php
                             }
                                     

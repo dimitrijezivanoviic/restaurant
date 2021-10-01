@@ -627,6 +627,27 @@ tr{
     margin-left: 10px;
 }
 
+.col-md-4{
+    flex: 0 0 33%;
+    max-width: 33%;
+}
+
+.col-md-4.sastojci {
+    margin-bottom: 20px;
+}
+
+.row_sastojci{
+    margin-bottom: 20px;
+}
+
+.pagination li {
+    display: inline;
+    margin-right: 10px;
+}
+
+.pagination li.active {
+    color: #ff5050;
+}
 
 /* --------------------- Responsive ---------------- */
 

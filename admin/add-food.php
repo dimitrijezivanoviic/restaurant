@@ -114,7 +114,7 @@
                 
                                 if($stmt)
                                 {   
-                                    $_SESSION['succes_add_food']="Uspesno ste dodali u jelovnik.";
+                                    $_SESSION['succes_add_food']="Uspešno ste dodali u jelovnik.";
                                     ?>
                                         <script>window.location.href='food.php';</script>
                                     <?php

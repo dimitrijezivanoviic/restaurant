@@ -87,6 +87,22 @@
                                     $username=$rows['username'];
                                     $role=$rows['role'];
                                     $status=$rows['status'];
+                                    $email=$rows['email'];
+                                    $amount_paid = 0;
+                                    $sql_count_orders = "SELECT * from orders WHERE email = '$email'";
+                                    $res_count_orders = mysqli_query($conn, $sql_count_orders);
+            
+                                    if($res_count_orders==TRUE){
+                                            $count_count_orders = mysqli_num_rows($res_count_orders); 
+                                            if($count_count_orders>0){
+                                                while($rows_count_orders=mysqli_fetch_assoc($res_count_orders))
+                                                {
+                                                    $amount = $rows_count_orders['amount_paid'];
+                                                    $amount_paid +=$amount;
+                                                }
+                                            }
+                                    }
+                                        
                                     ?>
                                         <!-- Ispisivanje vrednosti u tabelu -->
                                         <tr>
@@ -97,7 +113,12 @@
                                             <td data-label="Rola"><?php echo $role; ?></td>
                                             <td colspan="2" data-label="Akcije">
                                                 <a href="update-user.php?id=<?php echo $id; ?>" class="btn-secondary"><span class="las la-edit"></a>
-                                                <a href="delete-user.php?id=<?php echo $id; ?>" class="btn-danger"><span class="las la-trash"></a>
+                                                <?php if($role=='admin'){ }else { ?>
+                                                        <a onclick="return confirm('Da li želite da obrišete korisnika koji je u vašem restoranu imao porudžbine u vrednosti od <?php echo $amount_paid; ?> RSD?');" href="delete-user.php?id=<?php echo $id; ?>" class="btn-danger"><span class="las la-trash"></a>
+                                                    <?php 
+                                                    
+                                                }
+                                                     ?>
                                             </td>
                                         </tr>
                                     <?php

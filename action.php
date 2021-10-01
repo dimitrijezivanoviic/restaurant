@@ -99,7 +99,7 @@
 		date_default_timezone_set('CET');
 		$start = date("Y/m/d H:i:s");
 		$vreme_porudzbine = date("H:i:s");
-		$ordered_time = date('Y/m/d h:i:s',strtotime('+1 hour',strtotime($start)));
+		$ordered_time = date('Y/m/d H:i:s',strtotime('+45 minutes',strtotime($start)));
 
 		$name = $first_name . ' ' . $last_name;
 		

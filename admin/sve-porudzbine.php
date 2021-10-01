@@ -32,6 +32,16 @@
             
             <div class="row row_column">
                 <h3>Spisak svih porudžbina</h3>
+                <br>
+                <p>Ovde su prikazane sve porudžbine u prethodnih 30 dana!</p>
+            </div>
+            <br>
+            <div class="row">
+                <select name="state" id="maxRows">
+                    <option value="5000">Show All</option>
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                </select>
             </div>
             <div class="row" id="search_orders">
                 <form action="" method="POST" class="forma">
@@ -41,14 +51,14 @@
             </div>
                 <div class="table-grid" >
                     <div class="table-responsive">
-                        <table width="100%" class="content-table">
+                        <table width="100%" class="content-table" id="mytable">
                             <thead>
                                 <tr>
                                     <th>ID</th>
                                     <th>Korisnik</th>
-                                    <th>Narudzbenica</th>
+                                    <th>Narudžbenica</th>
                                     <th>Cena</th>
-                                    <th>Zavrseno</th>
+                                    <th>Završeno</th>
                                     <th>Status</th>
                                 </tr>
                             </thead>
@@ -58,11 +68,11 @@
                                 {
                                     $searchKey_username = $_POST['search_username'];
 
-                                    $sql = "SELECT * FROM orders INNER JOIN tbl_admin ON orders.usernameID=tbl_admin.id WHERE username = '$searchKey_username'";
+                                    $sql = "SELECT * FROM orders INNER JOIN tbl_admin ON orders.usernameID=tbl_admin.id WHERE username = '$searchKey_username' AND DATE(time) > (NOW() - INTERVAL 30 DAY);";
                                 }else{
                                     $sql = "SELECT *
                                     FROM orders
-                                    INNER JOIN tbl_admin ON orders.usernameID=tbl_admin.id;";
+                                    INNER JOIN tbl_admin ON orders.usernameID=tbl_admin.id WHERE DATE(time) > (NOW() - INTERVAL 30 DAY);";
                                     $searchKey_id = "";
                                     $searchKey_username = "";
                                 }
@@ -131,6 +141,13 @@
                         </table>
                     </div>
                 </div>
+                <div class="pagination-container">
+                    <nav>
+                        <ul class="pagination">
+
+                        </ul>
+                    </nav>
+                </div>
         </main>
         <?php 
         }else{
@@ -141,5 +158,56 @@
             header('location: index.php'); 
         }
         ?>
+        <script src="../js/jquery.min.js"></script>
+        <script>
+        var table = '#mytable'
+        $('#maxRows').on('change',function(){
+            $('.pagination').html('')
+            var trnum = 0
+            var maxRows = parseInt($(this).val())
+            var totalRows = $(table+' tbody tr').length
+            $(table+' tr:gt(0)').each(function(){
+                trnum++
+                if(trnum > maxRows){
+                    $(this).hide()
+                }
+                if(trnum <= maxRows){
+                    $(this).show()
+                }
+            })
+            if(totalRows > maxRows){
+                var pagenum = Math.ceil(totalRows/maxRows)
+                for(var i=1;i<=pagenum;){
+                    $('.pagination').append('<li data-page="'+i+'">\<span>'+ i++ +'<span class="sr-only">(current)</span></span>\</li>').show()
+                
+                }
+            }
+
+            $('.pagination li:first-child').addClass('active')
+            $('.pagination li').on('click',function(){
+                var pageNum = $(this).attr('data-page')
+                var trIndex = 0;
+                $('.pagination li').removeClass('active')
+                $(this).addClass('active')
+                $(table+' tr:gt(0)').each(function(){
+                    trIndex++
+                    if(trIndex > (maxRows*pageNum) || trIndex <= ((maxRows*pageNum)-maxRows)){
+                        $(this).hide()
+                    } else{
+                        $(this).show()
+                    }
+                })
+            })    
+        })
+        
+        $(function(){
+            $('table tr:eq(0)').prepend('<th>ID</th>')
+            var id=0;
+            $('table tr:gt(0)').each(function(){
+                id++
+                $(this).prepend('<td>'+id+'</td>')
+            })
+        })
+        </script>
     </body>
 </html>

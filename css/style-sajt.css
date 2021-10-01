@@ -740,7 +740,7 @@ table{
 
 .tabela-cart td a {
     color: red;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 500;
 }
 
@@ -951,8 +951,9 @@ div#checkout select {
     margin-right: 5px;
     padding: 10px;
     width: 50px;
-    background-color: var(--yellow);
+    background-color: var(--main-color);
     text-align: center;
+    color: var(--white);
 }
 
 .successfull_order h2 {

@@ -17,7 +17,7 @@
 ?>
 <?php
     if($role == 'admin'){  
-        if($status=='active'){
+        if($role_status=='active'){
 ?>
     <main>
         <div class="jedan">
@@ -46,14 +46,15 @@
                             <br>
                             <input type="text" name="ime" value="<?php echo $full_name?>">
                         </div>
+                        <?php if($role1=='admin') {}else{ ?>
                         <div class="col-md-6">
                             <label for="">Role</label>
                             <br>
-                            <input type="radio" name="role" value="admin" <?php if($role1 == 'admin'){ ?>checked<?php }?>> Admin
                             <input type="radio" name="role" value="korisnik" <?php if($role1 == 'korisnik'){ ?>checked<?php }?>> Korisnik
                             <input type="radio" name="role" value="kuvar" <?php if($role1 == 'kuvar'){ ?>checked<?php }?>> Kuvar
-                            <input type="radio" name="role" value="dostavljac" <?php if($role1 == 'dostavljac'){ ?>checked<?php }?>> Dostavljac
+                            <input type="radio" name="role" value="dostavljac" <?php if($role1 == 'dostavljac'){ ?>checked<?php }?>> Dostavljač
                         </div>
+                        <?php } ?>
                     </div>
                     <div class="row margin_bottom_10">
                         <div class="col-md-6 width_50">
@@ -61,12 +62,14 @@
                             <br>
                             <input type="text" name="email" value="<?php echo $email?>" >
                         </div>
+                        <?php if($role1=='admin') {}else{ ?>
                         <div class="col-md-6">
                             <label for="">Status</label>
                             <br>
                             <input type="radio" name="status" value="active" <?php if($status == 'active'){ ?>checked<?php }?>> Aktivan
                             <input type="radio" name="status" value="inactive" <?php if($status == 'inactive'){ ?>checked<?php }?>> Neaktivan
                         </div>
+                        <?php } ?>
                     </div>   
                     <div class="row margin_bottom_10">
                         <div class="col-md-6 width_50">
@@ -94,8 +97,12 @@
                         $ime1 = $_POST['ime'];
                         $username1 = $_POST['username'];
                         $email1=$_POST['email'];
+                        if($role1=='admin') {$status1='active';}else{
                         $status1 = $_POST['status'];
+                        }
+                        if($role1=='admin') {$role1='admin';}else{
                         $role1=$_POST['role'];
+                        }
                         $pass = $_POST['password'];
                         if($pass == '')
                          {
@@ -113,7 +120,7 @@
     
                             if($stmt)
                             {   
-                                $_SESSION['succes_update_user']="Uspesno ste azurirali podatke.";
+                                $_SESSION['succes_update_user']="Uspešno ste ažurirali podatke.";
                                 ?>
                                     <script>window.location.href='users.php';</script>
                                 <?php

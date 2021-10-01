@@ -8,6 +8,7 @@
         if($count>0){
             $rows=mysqli_fetch_assoc($res);
             $title=$rows['name'];
+            $category=$rows['categoryID'];
             $image_name=$rows['image'];
             $active=$rows['status'];
         }
@@ -65,9 +66,23 @@
                     </div>
                     <div class="row margin_bottom_10">
                         <div class="col-md-6 width_50">
-                            <label for="">Image name</label>
+                            <label for="">Naziv slike</label>
                             <br>
                             <input type="file" name="file" id="file">
+                        </div>
+                        <div class="col-md-6 width_50">
+                            <label for="">Kategorija</label>
+                            <br>
+                            <select name="kategorija" id="">
+                            <?php 
+                                while($rows_category=mysqli_fetch_assoc($res_category))
+                                {
+                                    $category_id = $rows_category['id'];
+                                    $category_name = $rows_category['title'];
+                            ?>
+                                    <option value="<?php echo $category_id; ?>" <?php if($category_id == $category){?> selected <?php } ?>><?php echo $category_id . ' - ' . $category_name; ?></option>
+                                    <?php } ?>
+                            </select>
                         </div>
                     </div>  
                     <div class="row margin_bottom_10">
@@ -75,12 +90,12 @@
                             <label for="">Slika</label>
                             <br>
                             <img src="" class="image-preview__image" alt="Image Preview" >
-                            <img src="../sajt/img/<?php echo $image_name; ?>" id="slika_prikazana"  alt="">
+                            <img src="/img/<?php echo $image_name; ?>" id="slika_prikazana"  alt="">
                         </div>
                     </div>
                     <div class="row margin_bottom_10">
                         <div class="col-md-6 btn-update width_50">
-                            <input type="submit" value="Azuriraj" name="update">
+                            <input type="submit" value="Ažuriraj" name="update">
                         </div>
                     </div>
                 </form>
@@ -89,6 +104,7 @@
                         {
                             $title_update = $_POST['title'];
                             $active_update = $_POST['status'];
+                            $category_update = $_POST['kategorija'];
 
                             if($_FILES['file']['name'])
                             {
@@ -102,7 +118,7 @@
                             {
 
                                 $stmt = $conn->prepare("UPDATE sastojci SET
-                                name = '$title_update', image = '$file_name', status = '$active_update' WHERE id = '$id'");
+                                name = '$title_update', image = '$file_name', status = '$active_update', categoryID = '$category_update' WHERE id = '$id'");
                                 $stmt->execute();
         
                                 if($stmt)

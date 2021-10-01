@@ -36,12 +36,12 @@
                                 <small><?= number_format($row['product_price'],2); ?> RSD</small>
                                 <input type="hidden" class="pprice" value="<?= $row['product_price'] ?>">
                                 <br>
-                                <a href="action.php?remove=<?= $row['id'] ?>" class="text-danger lead" onclick="return confirm('Da li ste sigurni da želite obrisati proizvod iz korpe?');">Obriši</a>
+                                <a href="action.php?remove=<?= $row['id'] ?>" class="text-danger lead" onclick="return confirm('Obrisaće se cela količina ovog proizvoda iz korpe! Da li ste sigurni?');">Obriši proizvod</a>
                             </div>
                         </div>
                     </td>
-                    <td><input type="number" class="form-control itemQty" value="<?= $row['qty'] ?>" min=1 style="width:75px;"></td>
-                    <td><h3><?= number_format($row['total_price'],2); ?> RSD</h3></td>
+                    <td><input type="number" class="form-control itemQty" name="kolicina" value="<?= $row['qty'] ?>" min=1 style="width:75px;"></td>
+                    <td><h3><?= number_format($row['total_price'],2);?> RSD</h3></td>
                     <?php $grand_total += $row['total_price']; ?>
                 </tr>
                 <?php endwhile; ?>
@@ -172,6 +172,12 @@
         <script src="js/script.js"></script>
 
         <script type="text/javascript">
+
+                // Onemoguciti da se kolicina upisuje sa tastature
+                $("[type='number']").keypress(function (evt) {
+                    evt.preventDefault();
+                });
+
             $(document).ready(function() {
 
                 // Promena kolicine proizvoda

@@ -61,6 +61,20 @@
                             <br>
                             <img src="" class="image-preview__image" alt="Image Preview" >
                         </div>
+                        <div class="col-md-6 width_50 image-preview" id="imagePreview">
+                            <label for="">Kategorija</label>
+                            <br>
+                            <select name="kategorija" id="">
+                                <?php
+                                    while($rows_category=mysqli_fetch_assoc($res_category))
+                                    {
+                                        $category_id = $rows_category['id'];
+                                        $category_name = $rows_category['title'];
+                                ?>
+                                <option value="<?php echo $category_id; ?>" ><?php echo $category_id . ' - ' . $category_name; ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
                     </div>
                     <div class="row margin_bottom_10">
                         <div class="col-md-6 btn-update width_50">
@@ -73,12 +87,13 @@
                         {
                             $title = $_POST['title'];
                             $status = $_POST['status'];
+                            $category = $_POST['kategorija'];
                             $file_name = $_FILES['file']['name'];
                             
                             if($title !='' && $status !='' && $file_name !='')
                             {
                                 $stmt = $conn->prepare("INSERT INTO sastojci SET
-                                name = '$title', image = '$file_name', status = '$status'");
+                                name = '$title', image = '$file_name', status = '$status',categoryID = '$category'");
                                 $stmt->execute();
                 
                                 if($stmt)

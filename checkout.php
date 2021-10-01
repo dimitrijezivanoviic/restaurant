@@ -36,7 +36,7 @@
             <!-- Unosenje podataka  -->
             <div class="checkout-column">
                 <div class="row">
-                    <h4> <i class="fas fa-user-alt"></i> Unesite svoje podatke</h4>
+                    <h4> <i class="fas fa-user-alt"></i> Unesite podatke za dostavu</h4>
                 </div>
                 <div class="row">
                     <form action="" method="POST" class="forma" id="placeOrder"> 
@@ -97,12 +97,12 @@
                                 <label for="">E-mail*</label>
                             </div>
                             <div class="row" id="checkout_row">
-                                <input type="email" name="email" placeholder="primer@primer.com" required>
+                                <input type="email" name="email" value="<?php echo $email;?>" readonly="readonly">
                             </div>
                         </div>
 
                         <div class="row order-btn">
-                            <button name="order"><i class="fas fa-shopping-cart"></i> Poruci</button>
+                            <button name="order"><i class="fas fa-shopping-cart"></i> Poruči</button>
                         </div>
                     </form>
                 </div>

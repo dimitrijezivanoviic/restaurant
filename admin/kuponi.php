@@ -67,7 +67,7 @@
                                         <td data-label="Kod"><?php echo $code; ?></td>
                                         <td data-label="Iznos"><?php echo $percentage; ?></td>
                                         <td colspan="2"  data-label="Akcija">
-                                            <a href="delete-kupon.php?id=<?php echo $id; ?>" class="btn-danger"><span class="las la-trash"></a>
+                                            <a onclick="return confirm('Da li ste sigurni da želite obrisati?');" href="delete-kupon.php?id=<?php echo $id; ?>" class="btn-danger"><span class="las la-trash"></a>
                                         </td>
                                     </tr>
                                 <?php

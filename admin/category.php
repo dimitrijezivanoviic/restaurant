@@ -76,7 +76,7 @@
                                         <td data-label="Naslov"><?php echo $title; ?></td>
                                         <td colspan="2"  data-label="Akcija">
                                             <a href="update-category.php?id=<?php echo $id; ?>" class="btn-secondary"><span class="las la-edit"></a>
-                                            <a href="delete-category.php?id=<?php echo $id; ?>" class="btn-danger"><span class="las la-trash"></a>
+                                            <a onclick="return confirm('Da li ste sigurni da želite obrisati?');" href="delete-category.php?id=<?php echo $id; ?>" class="btn-danger"><span class="las la-trash"></a>
                                         </td>
                                     </tr>
                                 <?php

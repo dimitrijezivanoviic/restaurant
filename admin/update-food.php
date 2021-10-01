@@ -89,7 +89,7 @@
                     </div>   
                     <div class="row margin_bottom_10">
                         <div class="col-md-6 width_50">
-                            <label for="">Image name</label>
+                            <label for="">Izaberi sliku</label>
                             <br>
                             <input type="file" name="file" id="file">
                         </div>
@@ -104,12 +104,12 @@
                             <label for="">Slika</label>
                             <br>
                             <img src="" class="image-preview__image" alt="Image Preview" >
-                            <img src="../sajt/img/<?php echo $image_name; ?>" id="slika_prikazana"  alt="">
+                            <img src="../img/<?php echo $image_name; ?>" id="slika_prikazana"  alt="">
                         </div>
                     </div>
                     <div class="row margin_bottom_10">
                         <div class="col-md-6 btn-update width_50">
-                            <input type="submit" value="Azuriraj" name="update">
+                            <input type="submit" value="Ažuriraj" name="update">
                         </div>
                     </div>
                 </form>
@@ -144,7 +144,7 @@
         
                                 if($stmt)
                                 {   
-                                    $_SESSION['succes_update_food']="Uspesno ste azurirali podatke.";
+                                    $_SESSION['succes_update_food']="Uspešno ste ažurirali podatke.";
                                     ?>
                                         <script>window.location.href='food.php';</script>
                                     <?php

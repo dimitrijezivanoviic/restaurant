@@ -47,10 +47,9 @@
                     <div class="col-md-6">
                         <label for="">Role</label>
                         <br>
-                        <input type="radio" name="role" value="admin"> Admin
                         <input type="radio" name="role" value="korisnik" checked> Korisnik
                         <input type="radio" name="role" value="admin"> Kuvar
-                        <input type="radio" name="role" value="korisnik"> Dostavljac
+                        <input type="radio" name="role" value="korisnik"> Dostavljač
                     </div>
                 </div>
                 <div class="row margin_bottom_10">
@@ -105,7 +104,7 @@
                     if($res_check==TRUE){
                         $count_check = mysqli_num_rows($res_check); 
                         if($count_check>0){
-                            $_SESSION['exist_username'] = "Vec imamo registrovanog korisnika sa ovim username-om.";
+                            $_SESSION['exist_username'] = "Već imamo registrovanog korisnika sa ovim username-om.";
                             ?>
                                 <script>window.location.href='add-user.php';</script>
                             <?php
@@ -120,7 +119,7 @@
                 
                                     if($stmt)
                                     {   
-                                        $_SESSION['succes_add']="Uspesno ste dodali korisnika.";
+                                        $_SESSION['succes_add']="Uspešno ste dodali korisnika.";
                                         ?>
                                             <script>window.location.href='users.php';</script>
                                         <?php

@@ -152,7 +152,7 @@
                             <input type="hidden" class="pprice" value="<?= $row['price'] ?>">
                             <input type="hidden" class="pimage" value="<?= $row['image_name'] ?>">
                             <input type="hidden" class="pcode" value="<?= $row['id'] ?>">
-                            <button data-aos="zoom-in" class="poruci" type="submit"><i class="las la-cart-arrow-down"></i>  Add to cart</button>
+                            <button data-aos="zoom-in" class="poruci" type="submit"><i class="las la-cart-arrow-down"></i> <?php if(isset($_SESSION['user'])){ ?>Add to cart<?php }else { ?> Uloguj se za dodavanje u korpu! <?php } ?></button>
                         </form>
                     </div>
             <?php endwhile; ?>
@@ -234,23 +234,37 @@
             $email_subscribe = $_POST['email_subscribe'];
             if($email_subscribe!='')
             {
-                $sql_subscribe = $conn->prepare("INSERT INTO subscription SET email = '$email_subscribe'");
-                $sql_subscribe->execute();
-
-                if($sql_subscribe)
-                {
-                    // $_SESSION['success_subscription'] = "Hvala na pretplati! Dobili ste kupon sa 10% popusta! Kupon: <strong>OFF10</strong>";
-                    ?>
-                    <script>
-                        alert("Kupon kod je: POPUST10");
+                $sql_check_subscribers = "SELECT * FROM subscription WHERE email='$email_subscribe' ";
+                $res_check_subscribers = mysqli_query($conn, $sql_check_subscribers);
+                if($res_check_subscribers==TRUE){
+                    $count_check_subscribers = mysqli_num_rows($res_check_subscribers); 
+                    if($count_check_subscribers>0){
+                        ?>
+                        <script>
+                        alert("Već ste se registrovali na naš newsletter i dobili kupon kod!");
                         // window.location.href='index.php#subscription';
-                    </script>
-                    <?php
-                }else{
-                    $_SESSION['error_subscription'] = "Doslo je do greske";
-                    ?>
-                    <script>window.location.href='add-user.php';</script>
-                    <?php
+                        </script>
+                        <?php
+                    }else{
+                        $sql_subscribe = $conn->prepare("INSERT INTO subscription SET email = '$email_subscribe'");
+                        $sql_subscribe->execute();
+        
+                        if($sql_subscribe)
+                        {
+                            // $_SESSION['success_subscription'] = "Hvala na pretplati! Dobili ste kupon sa 10% popusta! Kupon: <strong>OFF10</strong>";
+                            ?>
+                            <script>
+                                alert("Kupon kod je: POPUST10! Ovaj kupon možete uneti i iskoristiti prilikom checkout-a!");
+                                // window.location.href='index.php#subscription';
+                            </script>
+                            <?php
+                        }else{
+                            $_SESSION['error_subscription'] = "Doslo je do greske";
+                            ?>
+                            <script>window.location.href='index.php';</script>
+                            <?php
+                        }
+                    }
                 }
             }
         }

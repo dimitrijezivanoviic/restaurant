@@ -53,7 +53,7 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Title</th>
+                            <th>Naziv</th>
                             <th>Sastojci</th>
                             <th>Cena</th>
                             <th>Image name</th>
@@ -93,12 +93,12 @@
                                         <td data-label="Naziv"><?php echo $title; ?></td>
                                         <td data-label="Opis"><?php echo $description; ?></td>
                                         <td data-label="Cena"><?php echo $price; ?> RSD</td>
-                                        <td data-label="Slika"><img src="../sajt/img/<?php echo $image_name; ?>" heigh="50px" width="100px" alt=""></td>
+                                        <td data-label="Slika"><img src="/img/<?php echo $image_name; ?>" heigh="50px" width="100px" alt=""></td>
                                         <td data-label="Kategorija"><?php echo $category; ?></td>
                                         <td data-label="Status"><?php echo $active; ?></td>
                                         <td colspan="2" data-label="Akcija">
                                             <a href="update-food.php?id=<?php echo $id; ?>" class="btn-secondary"><span class="las la-edit"></a>
-                                            <a href="delete-food.php?id=<?php echo $id; ?>" class="btn-danger"><span class="las la-trash"></a>
+                                            <a onclick="return confirm('Da li ste sigurni da želite obrisati?');" href="delete-food.php?id=<?php echo $id; ?>" class="btn-danger"><span class="las la-trash"></a>
                                         </td>
                                     </tr>
                                 <?php
