@@ -23,6 +23,11 @@
                     ?>
                         <form action="" method="POST" class="forma">
                             <div class="row">
+                                <label for="">Naziv jela</label>
+                                <br>
+                                <input type="text" name="ime" placeholder="Unesite naziv jela">
+                            </div>
+                            <div class="row">
                                 <h4>Sastojci: </h4>
                             </div>
                             <br>
@@ -80,6 +85,7 @@
                                          $opis = $_POST['opis'];
                                          $kategorija = $_POST['kategorija'];
                                          $prilozi = 'Prilozi: ';
+                                         $ime = $_POST['ime'];
                                          foreach($prilog as $prilozi1)
                                          {
                                              $prilozi = $prilozi . ' ' . $prilozi1. ',';
@@ -87,6 +93,7 @@
                                          $sastojci = $prilozi;
          
                                          $upit_membership = $conn->prepare("INSERT INTO recepti SET
+                                         naziv = '$ime',
                                          kategorija = '$kategorija',
                                          sastojci = '$sastojci',
                                          opis = '$opis'

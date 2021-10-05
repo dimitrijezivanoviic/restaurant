@@ -71,7 +71,7 @@
                 <?php if ($role == 'admin'){ ?>
                 <li>
                     <a href="sastojci.php"><span class="las la-cookie-bite"></span>
-                        <span>Sastojciiiii</span></a>
+                        <span>Sastojci</span></a>
                 </li>
                 <?php } ?>
                 <?php if ($role == 'kuvar' || $role == 'admin'){ ?>
