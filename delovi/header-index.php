@@ -9,7 +9,7 @@ if(isset($_SESSION['user']))
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dine Out - Restaurant</title>
+    <title>Le jardin</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/style-sajt.css">

@@ -1,6 +1,6 @@
 <?php include('delovi/header-admin.php'); ?>
 <?php
-    if($role == 'admin'){ 
+    if($role == 'admin' || $role == 'kuvar'){ 
         if($status=='active'){
 ?>
         <main>
@@ -65,12 +65,25 @@
                                     $kategorija=$rows['kategorija'];
                                     $sastojci=$rows['sastojci'];
                                     $opis=$rows['opis'];
+
+                                    // trazenje imena kategorije po prethodno dobijenom id-u iznad
+                                    $sql_cat_name = "SELECT * FROM tbl_category WHERE id='$kategorija'";
+                                    $res_cat_name = mysqli_query($conn, $sql_cat_name);
+
+                                    if($res_cat_name==TRUE){
+                                        $count_cat_name = mysqli_num_rows($res_cat_name); 
+
+                                        if($count_cat_name>0){
+                                            $rows_cat_name=mysqli_fetch_assoc($res_cat_name);
+                                            $ime_kategorije=$rows_cat_name['title'];
+                                        }
+                                    }
                                         
                                     ?>
                                         <!-- Ispisivanje vrednosti u tabelu -->
                                         <tr>
                                             <td data-label="ID"><?php echo $id; ?></td>
-                                            <td data-label="Kategorija"><?php echo $kategorija; ?></td>
+                                            <td data-label="Kategorija"><?php echo $ime_kategorije; ?></td>
                                             <td data-label="Sastojci"><?php echo $sastojci; ?></td>
                                             <td data-label="Opis"><?php echo $opis; ?></td>
                                             <td colspan="2" data-label="Akcije">

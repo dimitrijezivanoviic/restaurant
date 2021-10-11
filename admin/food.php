@@ -81,7 +81,7 @@
                                 $category=$rows['categoryID'];
 
                                 $sql_category = "SELECT * FROM tbl_category WHERE id = '$category'";
-                                $res_category = mysqli_query($conn, $sql);
+                                $res_category = mysqli_query($conn, $sql_category);
                                 $rows_category=mysqli_fetch_assoc($res_category);
 
                                 $category_name = $rows_category['title'];
@@ -94,7 +94,7 @@
                                         <td data-label="Opis"><?php echo $description; ?></td>
                                         <td data-label="Cena"><?php echo $price; ?> RSD</td>
                                         <td data-label="Slika"><img src="/img/<?php echo $image_name; ?>" heigh="50px" width="100px" alt=""></td>
-                                        <td data-label="Kategorija"><?php echo $category; ?></td>
+                                        <td data-label="Kategorija"><?php echo $category_name; ?></td>
                                         <td data-label="Status"><?php echo $active; ?></td>
                                         <td colspan="2" data-label="Akcija">
                                             <a href="update-food.php?id=<?php echo $id; ?>" class="btn-secondary"><span class="las la-edit"></a>
