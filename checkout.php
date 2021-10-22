@@ -7,7 +7,7 @@
     $porudzbenica = '';
     $porudzbenica_baza = '';
 
-	$sql = "SELECT * FROM cart WHERE usernameID = '$id_username'";
+	$sql = "SELECT * FROM cart WHERE usernameID = '$id_username' AND qty !=0";
 	$stmt = $conn->prepare($sql);
 	$stmt->execute();
 	$result = $stmt->get_result();
