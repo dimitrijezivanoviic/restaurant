@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 14, 2021 at 10:33 PM
+-- Generation Time: Oct 11, 2021 at 02:23 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.4.19
 
@@ -38,6 +38,17 @@ CREATE TABLE `cart` (
   `usernameID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`id`, `product_name`, `product_price`, `product_image`, `qty`, `total_price`, `product_code`, `usernameID`) VALUES
+(463, 'Caesar Beef Jalapeno', '500.00', 'burger16.jpg', 1, '500', 7, 159),
+(464, 'Caesar Beef', '490.00', 'burgers.jpeg', 1, '490', 4, 159),
+(465, 'Capricciosa', '780.00', 'pizza7.jpg', 1, '780', 11, 159),
+(466, 'Caesar Beef', '490.00', 'burgers.jpeg', 1, '490', 4, 144),
+(467, 'Caesar Chicken', '500.00', 'burger14.jpeg', 1, '500', 5, 144);
+
 -- --------------------------------------------------------
 
 --
@@ -55,7 +66,6 @@ CREATE TABLE `coupons` (
 --
 
 INSERT INTO `coupons` (`id_coupons`, `code`, `percentage`) VALUES
-(1, 'nothing', 1),
 (4, 'popust10', 0.9);
 
 -- --------------------------------------------------------
@@ -85,15 +95,38 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id_order`, `name`, `email`, `usernameID`, `phone`, `city`, `address`, `pmode`, `products`, `amount_paid`, `order_status`, `membership_order`, `time`) VALUES
-(185, 'qdwqdw qwdwqdqwd', 'adwawd@adw.com', 149, '123412124', 'Beograd', 'qwdqwdqwd', '', ' Burger x 1,  Burger x 1, ', '1000', 'priprema', 'no', '2021-07-14 10:59:13'),
-(186, 'Dimitrije Zivanovic', 'admin@admin.com', 144, '0641235567', 'Beograd', 'Srpskog Sovjeta 10', '', ' Fanta x 1,  Caesar Beef x 1,  Caesar Beef Jalapeno x 1, ', '1040', 'completed', 'no', '2021-07-14 02:36:14'),
-(187, 'Dimitrije Zivanovic', 'admin@admin.com', 144, '0642845711', 'Beograd', 'Srpskog Sovjeta 10', '', ' Caesar Beef x 1,  Caesar Chicken x 1, ', '990', 'completed', 'no', '2021-07-14 11:15:35'),
-(188, 'Dimitrije Zivanovic', 'admin@admin.com', 144, '0642845711', 'Beograd', 'Srpskog Sovjeta 10', '', ' Caesar Chicken x 2,  Big Tasty Bacon x 2,  Capricciosa x 3,  Coca Cola x 2,  Fanta x 2, ', '4440', 'completed', 'no', '2021-07-14 11:21:51'),
-(189, 'Dimitrije Zivanovic', 'admin@admin.com', 144, '0642845711', 'Beograd', 'Srpskog Sovjeta 10', '', ' Caesar Beef x 1, ', '490', 'completed', 'no', '2021-07-14 11:22:39'),
-(190, 'Dimitrije Zivanovic', 'admin@admin.com', 144, '0642845711', 'Beograd', 'Srpskog Sovjeta 10', '', ' Caesar Chicken x 1,  Caesar Beef Jalapeno x 1, ', '1000', 'completed', 'no', '2021-07-14 11:23:03'),
-(191, 'Aleksa Aleksic', 'aleksa@gmail.com', 149, '0612432451', 'Beograd', 'Knez Mihailova', '', ' Burger x 1,  Burger x 1, ', '600', 'preuzeo dostavljac', 'no', '2021-07-14 10:39:21'),
-(192, 'Aleksa Aleksic', 'aleksa@gmail.com', 149, '0641212434', 'Beograd', 'Knez Mihailova', '', ' Caesar Chicken x 1, ', '500', 'ordered', 'no', '2021-07-14 11:26:30'),
-(193, 'Aleksa Aleksic', 'aleksa@gmail.com', 149, '064124151', 'Beograd', 'Knez Mihailova', '', ' Caesar Chicken x 1,  Caesar Beef x 1, ', '990', 'ceka dostavu', 'no', '2021-07-14 10:49:19');
+(186, 'Dimitrije Zivanovic', 'admin@admin.com', 144, '0641235567', 'Beograd', 'Srpskog Sovjeta 10', '', ' Fanta x 1,  Caesar Beef x 1,  Caesar Beef Jalapeno x 1, ', '1040', 'completed', 'no', '2021-09-22 02:36:14'),
+(188, 'Dimitrije Zivanovic', 'admin@admin.com', 144, '0642845711', 'Beograd', 'Srpskog Sovjeta 10', '', ' Caesar Chicken x 2,  Big Tasty Bacon x 2,  Capricciosa x 3,  Coca Cola x 2,  Fanta x 2, ', '4440', 'completed', 'no', '2021-09-21 11:21:51'),
+(189, 'Dimitrije Zivanovic', 'dimitrije@gmail.com', 144, '0642845711', 'Beograd', 'Srpskog Sovjeta 10', '', ' Caesar Beef x 1, ', '490', 'completed', 'no', '2021-09-21 11:22:39'),
+(190, 'Dimitrije Zivanovic', 'admin@admin.com', 144, '0642845711', 'Beograd', 'Srpskog Sovjeta 10', '', ' Caesar Chicken x 1,  Caesar Beef Jalapeno x 1, ', '1000', 'completed', 'no', '2021-09-29 11:23:03'),
+(196, 'adwawdawd awdawdawd', 'admin@admin.com', 144, '1233214412', 'Beograd', 'wdaawdawd', '', ' Caesar Beef x 1,  Caesar Chicken x 1, ', '990', 'completed', 'no', '2021-10-01 12:35:09'),
+(199, 'aweaw aweaw', 'admin@admin.com', 144, '231321321', 'Beograd', 'aweawe', '', ' Caesar Beef x 1,  Caesar Chicken x 1,  Big Tasty Bacon x 1, ', '1440', 'completed', 'no', '2021-10-10 14:09:46'),
+(202, 'Dimitrije Živanović', 'korisnik@korisnik.com', 159, '0641234567', 'Beograd', 'Savski nasip', '', ' Caesar Beef x 1,  Capricciosa x 1,  Coca Cola x 1,  Fanta x 1, ', '1370', 'canceled', 'no', '2021-10-01 13:52:06'),
+(204, 'Dimitrije Zivanovic', 'korisnik@korisnik.com', 159, '0641234567', 'Beograd', 'Srpskog Sovjeta', '', ' Caesar Beef x 1,  Caesar Chicken x 1, ', '990', 'ceka dostavu', 'no', '2021-10-11 14:26:30'),
+(205, 'Dimitrije Zivanovic', 'korisnik@korisnik.com', 159, '0641234567', 'Beograd', 'Savski nasip', '', ' Capricciosa x 1,  Quattro Formage x 1,  Coca Cola x 1, ', '1730', 'ceka dostavu', 'no', '2021-10-11 14:26:29'),
+(206, 'Dimitrije Zivanovic', 'korisnik@korisnik.com', 159, '0641234567', 'Beograd', 'Savski nasip', '', ' Caesar Beef x 1,  Quattro Formage x 1,  Coca Cola x 1, ', '1440', 'ordered', 'no', '2021-10-11 14:52:07'),
+(207, 'Dimitrije Zivanovic', 'korisnik@korisnik.com', 159, '0641234567', 'Beograd', 'Savski nasip', '', ' Caesar Beef x 1,  Caesar Chicken x 1, ', '891', 'priprema', 'no', '2021-10-11 14:37:57');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `recepti`
+--
+
+CREATE TABLE `recepti` (
+  `id` int(11) NOT NULL,
+  `naziv` varchar(255) NOT NULL,
+  `kategorija` varchar(255) NOT NULL,
+  `sastojci` varchar(255) NOT NULL,
+  `opis` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `recepti`
+--
+
+INSERT INTO `recepti` (`id`, `naziv`, `kategorija`, `sastojci`, `opis`) VALUES
+(10, 'Pizza margarita', '9', 'Prilozi:  Voda, so, brašno, pelat, mozzarella,', 'Staviite pellat u činiju, a nakon toga nalijte malo ekstra devičanskog maslinovog ulja, posolite i prodinstajte dok se malo ne zgusne da dobije gustinu sosa.');
 
 -- --------------------------------------------------------
 
@@ -105,20 +138,35 @@ CREATE TABLE `sastojci` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL,
-  `status` varchar(100) NOT NULL
+  `status` varchar(100) NOT NULL,
+  `categoryID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `sastojci`
 --
 
-INSERT INTO `sastojci` (`id`, `name`, `image`, `status`) VALUES
-(1, 'kackavaljadw', 'kackavalj.jpg', 'active'),
-(2, 'origano', 'origano.jpg', 'active'),
-(3, 'kecap', 'kecap.jpg', 'active'),
-(4, 'pecurke', 'pecurke.jpg', 'active'),
-(5, 'masline', 'masline.jpg', 'active'),
-(6, 'prsut', 'prsut.jpg', 'active');
+INSERT INTO `sastojci` (`id`, `name`, `image`, `status`, `categoryID`) VALUES
+(1, 'kačkavalj', 'kackavalj.jpg', 'active', 9),
+(2, 'origano', 'origano.jpg', 'active', 9),
+(3, 'kečap', 'kecap.jpg', 'active', 9),
+(4, 'pečurke', 'pecurke.jpg', 'active', 9),
+(5, 'masline', 'masline.jpg', 'active', 9),
+(6, 'pršut', 'prsut.jpg', 'active', 9),
+(9, 'Voda', 'voda.jpg', 'active', 14),
+(10, 'so', 'so.png', 'active', 14),
+(11, 'biber', 'biber.jpg', 'active', 14),
+(12, 'brašno', 'brasno.jpg', 'active', 14),
+(13, 'slanina', 'slanina.png', 'active', 13),
+(14, 'šunka', 'sunka.jpg', 'active', 9),
+(15, 'luk', 'luk.jpg', 'active', 9),
+(16, 'papričica', 'papricica.png', 'active', 9),
+(17, 'pelat', 'pelat.jpg', 'active', 9),
+(18, 'mozzarella', 'mozzarella.png', 'active', 9),
+(19, 'kozji sir', 'kozji isr.jpg', 'active', 9),
+(20, 'čili', 'cili.jpg', 'active', 9),
+(21, 'majonez', 'majonez.jpg', 'active', 9),
+(22, 'rukola', 'rukola.jpg', 'active', 9);
 
 -- --------------------------------------------------------
 
@@ -130,99 +178,6 @@ CREATE TABLE `subscription` (
   `id` int(11) NOT NULL,
   `email` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `subscription`
---
-
-INSERT INTO `subscription` (`id`, `email`) VALUES
-(26, 'dwaadw'),
-(27, 'dwaadw'),
-(28, 'dwaadw'),
-(29, 'dwaadw'),
-(30, 'dwaadw'),
-(31, 'dwaadw'),
-(32, 'dwaadw'),
-(33, 'dwaadw'),
-(34, 'dwaadw'),
-(35, 'dwaadw'),
-(36, 'dwaadw'),
-(37, 'dwaadw'),
-(38, 'dwaadw'),
-(39, 'dwaadw'),
-(40, 'dwaadw'),
-(41, 'dwaadw'),
-(42, 'dwaadw'),
-(43, 'dwaadw'),
-(44, 'dwaadw'),
-(45, 'dwaadw'),
-(46, 'dwaadw'),
-(47, 'dwaadw'),
-(48, 'dwaadw'),
-(49, 'dwaadw'),
-(50, 'dwaadw'),
-(51, 'dwaadw'),
-(52, 'dwaadw'),
-(53, 'dwaadw'),
-(54, 'dwaadw'),
-(55, 'dwaadw'),
-(56, 'dwaadw'),
-(57, 'dwaadw'),
-(58, 'dwaadw'),
-(59, 'dwaadw'),
-(60, 'dwaadw'),
-(61, 'dwaadw'),
-(62, 'dwaadw'),
-(63, 'dwaadw'),
-(64, 'dwaadw'),
-(65, 'dwaadw'),
-(66, 'dwaadw'),
-(67, 'dwaadw'),
-(68, 'dawawdaw'),
-(69, 'dawawdaw'),
-(70, 'dawawdaw'),
-(71, 'dawawdaw'),
-(72, 'dawawdaw'),
-(73, 'dawawdaw'),
-(74, 'dawawdaw'),
-(75, 'dawawdaw'),
-(76, 'dawawdaw'),
-(77, 'dawawdaw'),
-(78, 'dawawdaw'),
-(79, 'dawawdaw'),
-(80, 'dawawdaw'),
-(81, 'dawawdaw'),
-(82, 'dawawdaw'),
-(83, 'dawawdaw'),
-(84, 'dawawdaw'),
-(85, 'dawawdaw'),
-(86, 'dawawdaw'),
-(87, 'dawawdaw'),
-(88, 'dawawdaw'),
-(89, 'dawawdaw'),
-(90, 'dawawdaw'),
-(91, 'dawawdaw'),
-(92, 'dawawdaw'),
-(93, 'dawawdaw'),
-(94, 'dawawdaw'),
-(95, 'dawawdaw'),
-(96, 'dawawdaw'),
-(97, 'dawawdaw'),
-(98, 'dawawdaw'),
-(99, 'dawawdaw'),
-(100, 'dawawdaw'),
-(101, 'dawawdaw'),
-(102, 'dawawdaw'),
-(103, 'dawawdaw'),
-(104, 'awd@awd.com'),
-(105, 'awd@awd.com'),
-(106, 'rdg@dgr.com'),
-(107, 'rdg@dgr.com'),
-(108, 'rdg@dgr.com'),
-(109, 'dica@awd'),
-(110, 'adw@adw'),
-(111, 'wqeawd@adw.com'),
-(112, 'dica@dica.com');
 
 -- --------------------------------------------------------
 
@@ -245,11 +200,10 @@ CREATE TABLE `tbl_admin` (
 --
 
 INSERT INTO `tbl_admin` (`id`, `full_name`, `username`, `password`, `status`, `email`, `role`) VALUES
-(128, 'Dimitrije', 'dica', '202cb962ac59075b964b07152d234b70', 'inactive', 'dica@dica.com', 'admin'),
-(144, 'Dimitrije', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'active', 'admin@dica.com', 'admin'),
-(145, 'Milos', 'dostavljac', '0bbb636c4241945f113c1fef71a115cf', 'active', 'dostavljac@dostavljac.com', 'dostavljac'),
-(146, 'Nikola', 'kuvar', 'd44bb93f7b408a6da9045a40d103cbc6', 'active', 'kuvar@kuvar.com', 'kuvar'),
-(149, 'Aleksa', 'korisnik', '202cb962ac59075b964b07152d234b70', 'active', 'aleksa@gmail.com', 'korisnik');
+(144, 'Dimitrije', 'admin', '0192023a7bbd73250516f069df18b500', 'active', 'admin@admin.com', 'admin'),
+(146, 'Nikola', 'kuvar', '46525807d4067269d8567dc7137aec4e', 'active', 'kuvar@kuvar.com', 'kuvar'),
+(150, 'Miloš', 'dostavljac', '88fd731149832d64babdff8b11fcaf9d', 'active', 'dostavljac@dostavljac.com', 'dostavljac'),
+(159, 'Dimitrije', 'korisnik', '5116f16d3399fcb6571f571d79f35f41', 'active', 'korisnik@korisnik.com', 'korisnik');
 
 -- --------------------------------------------------------
 
@@ -259,18 +213,20 @@ INSERT INTO `tbl_admin` (`id`, `full_name`, `username`, `password`, `status`, `e
 
 CREATE TABLE `tbl_category` (
   `id` int(11) NOT NULL,
-  `title` varchar(100) NOT NULL
+  `title` varchar(100) NOT NULL,
+  `food` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbl_category`
 --
 
-INSERT INTO `tbl_category` (`id`, `title`) VALUES
-(8, 'burgeri'),
-(9, 'pizza'),
-(10, 'pića'),
-(13, 'pasta');
+INSERT INTO `tbl_category` (`id`, `title`, `food`) VALUES
+(8, 'burgeri', 'yes'),
+(9, 'pizza', 'yes'),
+(10, 'pića', 'no'),
+(13, 'pasta', 'yes'),
+(14, 'Osnovni sastojci', 'no');
 
 -- --------------------------------------------------------
 
@@ -332,10 +288,17 @@ ALTER TABLE `orders`
   ADD KEY `usernameID` (`usernameID`);
 
 --
+-- Indexes for table `recepti`
+--
+ALTER TABLE `recepti`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `sastojci`
 --
 ALTER TABLE `sastojci`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `categoryID` (`categoryID`);
 
 --
 -- Indexes for table `subscription`
@@ -370,7 +333,7 @@ ALTER TABLE `tbl_food`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=438;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=468;
 
 --
 -- AUTO_INCREMENT for table `coupons`
@@ -382,31 +345,37 @@ ALTER TABLE `coupons`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=194;
+  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=208;
+
+--
+-- AUTO_INCREMENT for table `recepti`
+--
+ALTER TABLE `recepti`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `sastojci`
 --
 ALTER TABLE `sastojci`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `subscription`
 --
 ALTER TABLE `subscription`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
 
 --
 -- AUTO_INCREMENT for table `tbl_admin`
 --
 ALTER TABLE `tbl_admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=150;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=162;
 
 --
 -- AUTO_INCREMENT for table `tbl_food`
 --
 ALTER TABLE `tbl_food`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- Constraints for dumped tables
@@ -424,6 +393,12 @@ ALTER TABLE `cart`
 --
 ALTER TABLE `orders`
   ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`usernameID`) REFERENCES `tbl_admin` (`id`);
+
+--
+-- Constraints for table `sastojci`
+--
+ALTER TABLE `sastojci`
+  ADD CONSTRAINT `sastojci_ibfk_1` FOREIGN KEY (`categoryID`) REFERENCES `tbl_category` (`id`);
 
 --
 -- Constraints for table `tbl_food`
