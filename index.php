@@ -224,7 +224,7 @@
                 <p>Pretplati se na naš newsletter i dobijaš kod za <strong>10%</strong> popusta! Pored toga slaćemo ti sve akcije koje budemo imali u našem restoranu!</p>
             </div>
             <div class="row" id="subscribe">
-                <input type="email" name="email_subscribe" placeholder="Unesi svoju e-mail adresu">
+                <input type="email" name="email_subscribe" placeholder="Unesi svoju e-mail adresu" required>
                 <button type="submit" name="subscribe">Pretplati se</button>
             </div>
         </form>

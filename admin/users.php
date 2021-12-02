@@ -89,7 +89,7 @@
                                     $status=$rows['status'];
                                     $email=$rows['email'];
                                     $amount_paid = 0;
-                                    $sql_count_orders = "SELECT * from orders WHERE email = '$email'";
+                                    $sql_count_orders = "SELECT * from orders WHERE email = '$email' AND order_status = 'completed'";
                                     $res_count_orders = mysqli_query($conn, $sql_count_orders);
             
                                     if($res_count_orders==TRUE){

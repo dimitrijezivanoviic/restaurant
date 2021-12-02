@@ -1,5 +1,11 @@
 <?php include('delovi/header.php');?>
 <?php
+    if($role == 'admin' || $role == 'korisnik')
+    {
+        if($status == 'active')
+        {
+?>
+<?php
 	
     //prenos vrednosti sa stranice cart.php preko sesije
     $grand_total = $_SESSION['total_popust'];
@@ -181,6 +187,20 @@
         header('location: cart.php');
     }
   ?>
+  <?php
+        }else{
+            ?>
+            <script>
+                alert("Vaš status je neaktivan. Kontaktirajte korisničku podršku u vezi ovoga.");
+                window.location.replace("login.php");
+            </script>
+            <?php
+           
+        }
+    }else{
+    header('location: login.php');
+    }
+    ?>
 </body>
 
 </html>

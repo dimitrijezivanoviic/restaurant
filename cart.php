@@ -160,8 +160,13 @@
 
     <?php
         }else{
-            $_SESSION['proba1'] = "Vas status je neaktivan. Kontaktirajte korisnicku podrsku u vezi ovoga.";
-            header('location: login.php');
+            ?>
+            <script>
+                alert("Vaš status je neaktivan. Kontaktirajte korisničku podršku u vezi ovoga.");
+                window.location.replace("login.php");
+            </script>
+            <?php
+           
         }
     }else{
     header('location: login.php');

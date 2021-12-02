@@ -7,7 +7,7 @@
   	 				<li><a href="index.php#home">Home</a></li>
   	 				<li><a href="index.php#our-menu">Menu</a></li>
   	 				<li><a href="index.php#about">About Us</a></li>
-  	 				<li><a href="index.php#staff">Staff</a></li>
+  	 				<li><a href="index.php#team">Staff</a></li>
   	 			</ul>
   	 		</div>
 			<div class="footer-col" id="footer-second">
