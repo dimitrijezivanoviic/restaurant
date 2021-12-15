@@ -1,5 +1,4 @@
 <?php include('delovi/header-index.php');?>
-
 <section class="home-section" id="home">
     <div class="home-bg"></div>
     <div class="container">
